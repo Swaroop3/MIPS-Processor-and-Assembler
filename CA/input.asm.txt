@@ -1,0 +1,21 @@
+    addi $t6, $0, 0
+    addi $t7, $t2, 0       
+    addi $t8, $t3, 0
+loop_out:
+	lw $t4, 0($t2)
+	addi $t6, $t6, 1
+	addi $t5, $0, 1
+	beq $t4, $0, nikal
+loop_main:
+	mul $t5, $t5, $t4
+	addi $t4, $t4, -1
+	bne $t4, $0, loop_main
+	sw $t5, 0($t3)
+	addi $t2, $t2, 1
+	addi $t3, $t3, 1
+nikal:
+	addi $t4, $t4, 1
+	sw $t4, 0($t3)
+	bne $t6, $t1, loop_out
+    addi $t2, $t7, 0
+    addi $t3, $t8, 0
